@@ -1,0 +1,42 @@
+[package]
+name = "yt-downloader"
+version = "0.1.0"
+authors = ["jinsonwu"]
+edition = "2024"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dioxus = { version = "0.6.0", features = [] }
+yt-dlp = { version = "1.3.4", features = [] }
+tokio = { version = "1.0", features = ["full"] }
+
+[features]
+default = ["desktop"]
+web = ["dioxus/web"]
+desktop = ["dioxus/desktop"]
+mobile = ["dioxus/mobile"]
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
+
+[package.metadata.bundle]
+name = "YouTube Downloader"
+identifier = "com.jinsonwu.yt-downloader"
+icon = ["assets/favicon.ico"]
+version = "0.1.0"
+resources = ["assets/*"]
+copyright = "Copyright (c) 2025 Jinson Wu. All rights reserved."
+category = "public.app-category.utilities"
+short_description = "A YouTube video downloader built with Rust"
+long_description = """
+A modern YouTube video downloader application built with Rust and Dioxus.
+Download your favorite YouTube videos with ease and beautiful UI.
+"""
